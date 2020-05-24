@@ -1,0 +1,623 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Anki Guide for MCAT</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "Songti TC", "Songti SC", "SimSun", "Nanum Myeongjo", NanumMyeongjo, Batang, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+.select-value-color-default { background-color: rgba(206,205,202,0.5); }
+.select-value-color-gray { background-color: rgba(155,154,151, 0.4); }
+.select-value-color-brown { background-color: rgba(140,46,0,0.2); }
+.select-value-color-orange { background-color: rgba(245,93,0,0.2); }
+.select-value-color-yellow { background-color: rgba(233,168,0,0.2); }
+.select-value-color-green { background-color: rgba(0,135,107,0.2); }
+.select-value-color-blue { background-color: rgba(0,120,223,0.2); }
+.select-value-color-purple { background-color: rgba(103,36,222,0.2); }
+.select-value-color-pink { background-color: rgba(221,0,129,0.2); }
+.select-value-color-red { background-color: rgba(255,0,26,0.2); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="4b86005d-badf-4d84-bf59-3a32448e63f1" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 50%"/><h1 class="page-title">Anki Guide for MCAT</h1></header><div class="page-body"><nav id="4795f644-026d-43dc-ac91-378d76581e80" class="block-color-gray table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4ded49ed-61b0-448a-8b18-7069d2dcf1d9">What Is This Guide?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4b65e1f6-f4ec-4374-9832-1b6c384fc864">1. What is Anki?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#898ecff8-d3e3-4626-9b14-fb3b3d11bd6b">2. How is Anki different from Quizlet or paper flashcards?</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#3507521b-93ae-4735-8567-8ff5b3bb3761">3. Installing Anki and Add-ons </a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#2936b1fd-dbb5-4b4b-8bb4-b8d2a5791770">Installing Anki</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#9250a246-829f-4ef8-a7e0-ef35f8981947">Installing add-ons</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#e21c386c-d1ba-47a2-a88f-74375589c99f">4. Making an Anki Deck</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#639bd50b-15f6-4911-8410-ba11ef7bbba9">5. Setting up Deck Options</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#07f9e62b-3e2c-4d78-b74c-da1d08bf9d65">6. Studying Anki Decks</a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#17c18113-3f5d-4888-8959-317db5761896">7. Explanation of Anki&#x27;s Algorithm</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#17c8642a-1ef8-4858-9cd4-a81addfb57f7">Learning Phase</a></div><div class="table_of_contents-item table_of_contents-indent-1"><a class="table_of_contents-link" href="#8e8d0d79-8748-4aca-92ed-f238424c8311">Review Phase</a></div></nav><h1 id="4ded49ed-61b0-448a-8b18-7069d2dcf1d9" class="">What Is This Guide?</h1><p id="f11517bb-d31a-438b-ab82-5e6949e8bbc9" class="">This guide is intended for students who are wanting to learn about <strong>what Anki is</strong> and <strong>how to use it to study for the MCAT</strong>. The Anki software is intimidating when first starting to use it, so this guide will teach the basics of navigating the program, making flashcards to study, and how to get the most benefit from studying those flashcards. Later sections will also get into the finer details of the program, which will be useful to know as you get familiar with Anki and would like to tweak things to best fit your needs.</p><h1 id="4b65e1f6-f4ec-4374-9832-1b6c384fc864" class="">1. What is Anki?</h1><p id="68287b59-683a-47b2-8f39-5a6961c2924d" class="">Anki is a highly customizable <strong>flashcard</strong> program. If you&#x27;ve ever used web-based <strong><a href="http://quizlet.com">Quizlet</a></strong> flashcards, you&#x27;ll be familiar with the basic concept: you&#x27;re presented with one side of the flashcard, and then you can reveal the other side to test yourself on pretty much anything. Unfortunately, the high customizability of Anki makes it rather difficult to understand the ins and outs of how the program works. This <strong>comprehensive</strong> <strong>guide</strong> will teach you everything you need to know to <strong>use Anki in the most efficient way possible</strong>.</p><ul id="883e7175-83e2-445e-b7da-234e2075304e" class="toggle"><li><details open=""><summary>Quizlet flashcard example</summary><figure id="92f2c830-b4a3-4dbb-b4c6-83fcab824db3" class="image"><a href="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled.png"><img style="width:672px" src="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled.png"/></a></figure></details></li></ul><ul id="321e2f38-c6bb-439a-800b-96c83ec8459b" class="toggle"><li><details open=""><summary>Anki flashcard example</summary><figure id="3e403093-bf0e-4ca7-a7d6-77588e843506" class="image"><a href="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%201.png"><img style="width:624px" src="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%201.png"/></a></figure></details></li></ul><h1 id="898ecff8-d3e3-4626-9b14-fb3b3d11bd6b" class="">2. How is Anki different from Quizlet or paper flashcards?</h1><p id="ff08c567-f53a-4a8c-895d-280ac1d9f555" class="">It&#x27;s hard to see on the surface how Anki is different from old-fashioned paper flashcards or applications like Quizlet. Truth be told, Anki&#x27;s user interface looks quite ugly when you first start using it. Anki&#x27;s power lies in its <em>implementation</em> of two key concepts for memorization: <strong>active recall</strong> and <strong>spaced repetition</strong>.</p><p id="fd4ddf66-f9f5-4959-ba0c-862833a24c83" class=""><strong>Active recall:</strong> a method of learning in which one actively tests their memory by answering questions or recalling information, rather than passively reviewing by re-reading or highlighting text. Flashcards in general leverage the principle of active recall, and the flexibility when making Anki&#x27;s flashcards makes it a broadly useful tool for studying. Anki cards can look like traditional front/back flashcards, fill-in-the-blank &quot;cloze&quot; style flashcards, or even images with labels hidden (e.g. for anatomy). Rather than looking at PowerPoint slides over and over again, or re-reading textbooks, Anki cards can help you use active learning in various ways.</p><p id="a8470272-48b2-405e-8eb4-1bbd6f4dc823" class=""><strong>Spaced repetition:</strong> a learning technique where new flashcards are seen more frequently than older ones. The time interval, which describes the amount of time before you see the same flashcard again, increases each time that flashcard is answered correctly. In Anki, an incorrectly answered flashcard will have its interval reduced so that you will see that card more frequently (since you presumably forgot the information on that specific flashcard).</p><p id="a7ee3a3e-1d3a-477c-9690-0e1e5ddd3780" class="">When you reveal the answer to a card, you are presented with buttons asking you to evaulate how well you knew that card. Based on your answer, the interval of that specific card is adjusted accordingly (the new interval is shown above each button). These principles allow you to <strong>study only as much as necessary</strong> while <strong>improving your retention of material</strong>.</p><figure id="4d5bfaec-9685-40ab-b91f-c6c1189dbc7d" class="image"><a href="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%202.png"><img style="width:336px" src="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%202.png"/></a><figcaption>Each card has a time interval associated with it. Cards you know well will increase in interval each time, giving you time to focus on newer or harder information.</figcaption></figure><p id="1e4e0e53-b2f7-4fa2-8665-e3727ccd66e0" class="">Of course, these principles can generally be used when studying from traditional flashcards or Quizlet. Anki allows us to automate the process so we can focus on studying information, and only studying that information when we have to.</p><h1 id="3507521b-93ae-4735-8567-8ff5b3bb3761" class="">3. Installing Anki and Add-ons </h1><h2 id="2936b1fd-dbb5-4b4b-8bb4-b8d2a5791770" class="">Installing Anki</h2><p id="20e049b7-f4d7-41ba-b7bd-a3979530b2b2" class="">Download and install the latest version of the Anki software using the instructions found on the <strong><a href="https://apps.ankiweb.net/">Anki website</a></strong>.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="11c0e5c2-3539-43a7-b6f2-197342658bd9"><div style="font-size:1.5em"><span class="icon">⚙</span></div><div style="width:100%">This guide was written with <strong>Anki version 2.1</strong> and version <strong>2.1 add-ons</strong>, but the basic principles will never change. In the future, add-on support might vary by version. It is not recommended to use version 2.0 when following this guide.</div></figure><h2 id="9250a246-829f-4ef8-a7e0-ef35f8981947" class="">Installing add-ons</h2><p id="b0ff7266-89ee-4938-a575-fe2165b4d0a4" class="">Add-ons are additional features users have developed which increase the functionality of the base Anki program. </p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="d1a796c8-b3ad-4d86-b94c-34f94b54a28e"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">To install add-ons: open Anki → open &#x27;Tools&#x27; menu → Add-ons → Get Add-ons... → type in the code from the Add-on links below</div></figure><p id="da45e26b-77ff-4414-a2bf-11372576e744" class="">When starting, you&#x27;ll have to take my word that the following add-ons are <strong>essential</strong> to have a good Anki experience:</p><ol id="71580572-48b7-404f-8a1f-2cb8bcf2de42" class="numbered-list" start="1"><li><a href="https://ankiweb.net/shared/info/1835859645">Hierarchical Tags</a></li></ol><ol id="a7e2c5e0-089d-42bd-bb5c-4df632ed71ca" class="numbered-list" start="2"><li><a href="https://ankiweb.net/shared/info/1374772155">Image Occlusion Enhanced</a></li></ol><ol id="4f307d1e-a573-4e2c-9831-a29a459b3000" class="numbered-list" start="3"><li><a href="https://ankiweb.net/shared/info/1102281552">Special Fields</a></li></ol><ol id="59a354e2-59d5-4cd6-846e-90da9dd6fcd0" class="numbered-list" start="4"><li><a href="https://ankiweb.net/shared/info/516643804">Frozen Fields</a></li></ol><p id="d898b0a0-48a0-4255-b48f-b1376d7644e1" class="">Here are some additional (<strong>optional</strong>) add-ons that change the apperance of Anki or provide extra statistics:</p><ol id="6dc7ef95-4992-4b58-8f8c-85ebd04458c3" class="numbered-list" start="1"><li><a href="https://ankiweb.net/shared/info/1496166067">Night Mode</a></li></ol><ol id="053d7711-d89f-4558-9aff-8ab2d1a34157" class="numbered-list" start="2"><li><a href="https://github.com/glutanimate/review-heatmap">Review Heatmap</a> (scroll down to Manual installation and follow the instructions for Anki 2.1)</li></ol><ol id="6f81e080-8a93-4c3f-b7df-e352db0abda0" class="numbered-list" start="3"><li><a href="https://ankiweb.net/shared/info/1556734708">More Decks Stats and Time Left</a></li></ol><ol id="ac90486f-499a-4f8e-b7bf-d5cb5ce3eba7" class="numbered-list" start="4"><li><a href="https://ankiweb.net/shared/info/738807903">More Overview Stats 2.1</a></li></ol><ol id="acd81f3b-c6ad-4a61-ba8f-f5dc5eb50d13" class="numbered-list" start="5"><li><a href="https://ankiweb.net/shared/info/1828603731">Stats Overview Pie Graph</a></li></ol><ol id="c5ae602d-57c2-4892-9a63-c4958786da70" class="numbered-list" start="6"><li><a href="https://ankiweb.net/shared/info/923360400">True Retention by Card Maturity</a></li></ol><h1 id="e21c386c-d1ba-47a2-a88f-74375589c99f" class="">4. Making an Anki Deck</h1><p id="755efa12-88ed-4f05-8a81-b69bb8ff2b2f" class="">Now that you&#x27;ve installing Anki and the add-ons listed above, Anki should look like this when you start the program (the following screenshots are taken with the &quot;Night Mode&quot; add-on, as well as all of the other optional add-ons mentioned above):</p><figure id="d208c8e7-1278-41b5-9d7c-a19eb4d7568e" class="image"><a href="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%203.png"><img style="width:432px" src="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%203.png"/></a></figure><p id="804dd633-0945-4d9b-8f5c-4eced7e9f6ca" class="">Let&#x27;s say we want to make some cards for a topic like &quot;childhood viral infections&quot;. Here is an example of some material we want to make flashcards for (for the MCAT, you should be making flashcards from the review materials you are using—Kaplan books, Princeton Review, etc.):</p><figure id="7a14075a-3c56-4bd6-b0cd-255ac71cd583" class="image"><a href="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%204.png"><img style="width:432px" src="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%204.png"/></a></figure><p id="fe7d2c14-cfe6-4ca2-9361-850e020323ca" class="">In Anki, click on the &quot;Add&quot; button. In this window, change the &quot;Type&quot; to &quot;Cloze&quot;. This allows us to make fill-in-the-blank style cards, but we can also make cards in a question/answer format. For this reason, I make cards exclusively in the cloze type so that I don&#x27;t have to switch back and forth and use multiple card types. </p><p id="8f2e41cb-7914-4be3-99d3-2cb1266c3bce" class="">We need to make a flashcard deck for these new cards to go into. Click on the Deck button (which should be set to Default when first starting out), click on the &quot;Add&quot; button, and give this deck a name. For this example, I&#x27;ve named my deck &quot;Week 1::Childhood viral infections&quot; (we&#x27;ll see what the &quot;::&quot; does soon). The Add window should now look like this:</p><figure id="bf01e404-243c-4d31-a2fa-d042a3d8c190" class="image"><a href="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%205.png"><img style="width:384px" src="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%205.png"/></a></figure><p id="be2f2ec1-a092-458e-856f-1a2ea199069a" class="">Next we type out our question and answer in the &quot;Text&quot; field. Then, highlight the answer you&#x27;ve written out, and press &quot;command/ctrl+shift+c&quot;. The &quot;cloze&quot; syntax that is added means that the text within the brackets is the &quot;blank&quot; part of the fill-in-the-blank when we study these cards. In this case, I am blanking out the answer to a question:</p><div id="8f02f42e-40f0-4dc8-a83a-0438af86888c" class="column-list"><div id="5e0bf859-70f9-45bb-8ee5-49c57adfe406" style="width:50%" class="column"><figure id="d3b878ce-1060-4dc0-a241-6f9053285638" class="image"><a href="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%206.png"><img style="width:384px" src="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%206.png"/></a><figcaption>Select the text that you want hidden when you first see the card. In this case, the answer to the question will be hidden.</figcaption></figure></div><div id="9a498df1-3f7d-4dc4-84a0-71e2a4a04177" style="width:50%" class="column"><figure id="ebadbdc7-6067-4859-8a3f-22874f0036a4" class="image"><a href="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%207.png"><img style="width:384px" src="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%207.png"/></a><figcaption>Pressing &quot;command/ctrl+shift+c&quot; adds the cloze &quot;{{c1:: }}&quot; syntax. The text in the middle will be hidden when studying the card.</figcaption></figure></div></div><p id="1cf2b135-12a7-4ee7-a9d5-ec5b0cb7b4d0" class="">This part is optional, but I like to add screenshots of any useful information to the card. This might look like taking a screenshot of an image I found on Google when reading more on a topic the flashcard covers. To do this, just add the screenshot image file into the &quot;Extra&quot; field:</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="b6c1455d-7528-4584-9e77-eb2795961f0f"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">On MacOS, press &quot;command+control+Shift+4&quot; to take a screenshot and copy it directly to the clipboard. Now you can quickly paste (&quot;command+v&quot;) the screenshot into the &quot;Extra&quot; field. I make the screenshot shortcut easier to press by remapping it to &quot;command+shift+1&quot;. You can set this up by going to System Preferences → Keyboard → &quot;Shortcuts&quot; tab → Screenshots → change key combination for &quot;Copy picture of selected area to clipboard&quot; to &quot;command+shift+1&quot;.</div></figure><figure id="8feb94ee-53a1-4cb9-9757-ce4eddd33e46" class="image"><a href="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%208.png"><img style="width:480px" src="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%208.png"/></a></figure><p id="fd194265-e16c-47f6-9a9d-297c188d2536" class="">You can add tags to cards you make, but it&#x27;s not as easy to organize cards this way. Instead, I make a separate deck for each subject and organize them as &quot;sub-decks&quot;, which I will soon explain. Press &quot;cmd/ctrl + enter&quot; or the &quot;Add&quot; button to add the card to the deck you just created. Repeat this process to add as many cards as needed to this deck. You can also add more cards later but going into this Add window and making sure the &quot;Deck&quot; is set to the deck you want to add cards to.</p><p id="8fad68c0-0d75-44e1-a4bb-54570ae8b7ac" class="">Let&#x27;s take a look at the main Anki window now:</p><figure id="1ccdac4b-bb69-4678-a3a8-e8182939fbc6" class="image"><a href="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%209.png"><img style="width:432px" src="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%209.png"/></a></figure><p id="56b4fcaa-1c26-40e4-baa6-4546058fad34" class="">Remember how I named my deck &quot;Week 1::Childhood viral infections&quot;? The two colons &quot;::&quot; indicate that you are making a deck that falls under a parent deck. These decks are called &quot;sub-decks&quot;. In the image above, we can see the main &quot;Week 1&quot; deck, with the subdeck which would contain all the cards from the lecture &quot;Childhood viral infections&quot;. You can organize your decks and subdecks however you find convenient, but it is always good to have one parent &quot;topic&quot; deck which contains all of the &quot;subtopic&quot; subdecks that fall under that topic. This way, when you study the cards from the main deck, you can get an assortment of questions from all of the subtopics instead of studying just one subtopic at a time.</p><p id="06d6e4b1-1e50-4dac-8698-ce1c46f45e52" class="">As an example, when I study for classes, I organize decks by the following deck naming convention - &quot;unit::testnumber::weeknumber::lecturename&quot;. This way, I can click on the Test 1 parent deck to study all of the cards for Test 1, or I can study from the Week 1 deck to study only that material:</p><figure id="804c7e63-96cc-4e2e-a36c-df0d8cea7160" class="image"><a href="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%2010.png"><img style="width:480px" src="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%2010.png"/></a></figure><p id="c83c6ee8-421c-44a0-bbbb-978c8ead5efe" class="">Here is a deck structure you could use for the MCAT: &quot;MCAT::subject::topic&quot;. So your decks may look something like this:</p><p id="9094a0b3-cf08-4e71-aa37-45bb64fc2c38" class="">- MCAT<div class="indented"><p id="f6e1988b-bbd0-4b76-948a-2eeabc7ddb70" class="">- Chem/Phys<div class="indented"><p id="0690c7eb-c2c4-4fee-a2ae-0fda330918b6" class="">- Optics</p><p id="c8064e5e-eae7-4847-bdfc-f9f4d8f96255" class="">- Nuclear Physics</p></div></p><p id="e737bf35-5a04-475a-8bcf-97e2979b6cba" class="">- Bio/Biochem<div class="indented"><p id="4d9da01d-492e-4af0-a5b9-7c03c725cbe7" class="">- Carbohydrates</p></div></p><p id="69f3d688-d042-45bb-a623-b9e6ef5e5815" class="">- Pyshc/Soc  </p></div></p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="8895ae00-73ad-4eb6-a749-83df0856a00c"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Use whatever organization works for you! Instead of re-naming the decks, you can move decks around by clicking and dragging too.</div></figure><h1 id="639bd50b-15f6-4911-8410-ba11ef7bbba9" class="">5. Setting up Deck Options</h1><p id="47402a74-609d-4188-a11b-43e923259da5" class="">You have now created a deck (or several) covering material you want to memorize. Before you study your cards, we have to make sure Anki&#x27;s algorithm for how often you see cards is optimized for your situation. For now, you&#x27;ll have to take a leap of faith and use the following settings when studying your cards. Read the section on understanding and adjusting settings for in-depth explanations of what all of this means.</p><p id="370ac1b2-51c0-44ec-8ddf-57bf24974959" class="">First, go into Anki preferences (&quot;Anki&quot; in the menu bar → Preferences). Make sure the &quot;Experimental V2 scheduler&quot; is checked, and accept any warnings the program displays. Your preferences window should look like this:</p><figure id="27a3331b-d695-4e50-b488-d5e66dc36de8" class="image"><a href="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%2011.png"><img style="width:480px" src="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%2011.png"/></a></figure><p id="291ccdd5-f882-46fe-a84b-81e754d7ce5b" class="">Click on the cogwheel/settings icon next to any of your decks, and click &quot;Options&quot;. Keep the &quot;Options group&quot; set to &quot;Default&quot;. This way, these settings will apply to any deck you create in the future. Copy these settings exactly (leave the General and Description tabs the same), and then click &quot;OK&quot;:</p><div id="6e698fce-e468-465d-b9e6-a94c948297f5" class="column-list"><div id="aebae981-d1f9-4122-b043-8e1960f607a7" style="width:33.333333333333336%" class="column"><figure id="e44b7239-42fc-4b57-a1ac-5a1d2281d4e3" class="image"><a href="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%2012.png"><img style="width:336px" src="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%2012.png"/></a></figure></div><div id="38414080-986f-49d1-9411-f393d3809f81" style="width:33.333333333333336%" class="column"><figure id="c6e06544-744f-4c39-a555-787bda9f9bf0" class="image"><a href="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%2013.png"><img style="width:931px" src="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%2013.png"/></a></figure></div><div id="515376fa-5fc6-43bd-87a3-770faa80c8dc" style="width:33.33333333333333%" class="column"><figure id="cb89d41e-8dce-421e-8322-798d20070074" class="image"><a href="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%2014.png"><img style="width:931px" src="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%2014.png"/></a></figure></div></div><p id="d7fa476b-ff66-42b5-a22a-97914b88df6a" class="">Now you&#x27;re ready to study. Click on a parent deck or subdeck (depending on whether you want to study multiple decks at a time, or a particular deck/subset of decks) and click &quot;study Now&quot;.</p><h1 id="07f9e62b-3e2c-4d78-b74c-da1d08bf9d65" class="">6. Studying Anki Decks</h1><p id="1b25ab08-da78-4471-9f48-1557b2203f23" class="">Let&#x27;s say I&#x27;ve just created a deck of 28 <mark class="highlight-blue">new</mark> cards for a lecture I had named &quot;Introduction to Virology&quot;:</p><figure id="17291553-3b26-41f3-91ec-523733c9c646" class="image"><a href="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%2015.png"><img style="width:432px" src="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%2015.png"/></a><figcaption>The &quot;Introduction to Virology&quot; deck shows 28 new cards since I have not studied any yet.</figcaption></figure><p id="6920851c-34ce-4c47-8071-bf3102edcb30" class="">Because I have a full set of cards for that lecture, I&#x27;d like to start studying it. As stated above, to study this &quot;Introduction to Virology&quot; deck, I would click on it and then click &quot;Study Now&quot;. The first card in that deck will pop up:</p><figure id="e7f9c0d0-907b-4100-ac43-fdd3b12b1011" class="image"><a href="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%2016.png"><img style="width:432px" src="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%2016.png"/></a><figcaption>A card I&#x27;ve made in question/answer format. The answer was &quot;clozed&quot; out when I made the card, so it is initially hidden.</figcaption></figure><p id="c919cb10-d265-451e-8f19-ab931c225218" class="">When you see the front of a card like this, come up with the answer to the question if you can. Once you&#x27;ve done that (or if you can&#x27;t come up with anything), press the spacebar or click on &quot;Show Answer&quot; to reveal the answer:</p><figure id="701af233-42de-49ba-ad4d-5966f70c2a81" class="image"><a href="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%2017.png"><img style="width:432px" src="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%2017.png"/></a><figcaption>The answer to the card from the previous picture. Note that both the typed out answer and the screenshot I add to the &quot;Extra&quot; section is shown.</figcaption></figure><p id="ca847874-4fe6-4e63-aeed-f8d00cf62752" class="">Now, you have to evaluate how you well you knew the answer to that card and whether you got the answer right or not. Based on this evaluation, you must press one of the buttons presented at the bottom of the window. Here is how to decide which button to click:</p><ol id="03b78568-e6b3-4113-8c70-956995b315be" class="numbered-list" start="1"><li>&quot;I got this question wrong&quot; OR &quot;I knew the answer but I couldn&#x27;t remember it&quot; → click &quot;<strong>Again</strong>&quot; or press 1</li></ol><ol id="53107469-5ca5-4d90-b130-b8fb30491647" class="numbered-list" start="2"><li>&quot;I answered this question correctly&quot; → click &quot;<strong>Good</strong>&quot; or press spacebar</li></ol><ol id="c591f321-4b6a-47c4-951d-22905ee8e8d4" class="numbered-list" start="3"><li>&quot;I answered this question correctly, but it took me considerable effort to do so&quot; → click &quot;<strong>Hard</strong>&quot; — This option will not appear on cards in the learning phase. More on that later.</li></ol><ol id="b0c8eab0-9e86-4757-a168-9ae9c363e6fb" class="numbered-list" start="4"><li><strong>NEVER</strong> <strong>PRESS</strong> &quot;<strong>Easy</strong>&quot; - I&#x27;ll explain below</li></ol><p id="fa310407-8e7b-4c33-90c5-674a8b647ca2" class="">Almost always, you should be pressing &quot;Good&quot; or &quot;Again&quot;. As the same card comes up again and again, pressing &quot;Good&quot; will increase the interval of the card (the amount of time it takes for that card to come back for you to review). Hitting &quot;Again&quot; will ensure that you see that card sooner and will see it more often than cards you know well. The reason you should never press easy is because the intervals will start to get very long very quickly, so you shouldn&#x27;t press it unless you know the question cold. But if that&#x27;s the case, that card probably isn&#x27;t very useful anyway.</p><p id="acdb1e44-56f3-4dd5-9440-286ce61dddb5" class="">You can see what the new interval of the card would be if you pressed each button above the buttons. In the picture above, if I got the question correct, I would press &quot;Good&quot; and I would see the card 3 hours later.</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="25790ec9-f015-4233-8f1a-07f148dfe516"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">It&#x27;s important to be honest when evaluating your answer. If you click &quot;Good&quot; but don&#x27;t really understand a concept, you&#x27;ll see that card less often and you may not learn it well.</div></figure><p id="79ce00a3-1f5d-43a1-9b30-43fa765fc74c" class="">Repeat this process for all of the cards in your deck, and you&#x27;ll see that the main screen shows that you have no new cards left, and nothing due either:</p><figure id="2512d941-1fdb-4eb4-865e-c988abbdb285" class="image"><a href="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%2018.png"><img style="width:528px" src="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%2018.png"/></a></figure><p id="9a91813a-189d-47af-9a9d-100d105522f2" class="">After around 3 hours (or in 20 minutes if you hit &quot;Again&quot; on some cards), you will see that cards in that deck will reappear, but this time they will count as cards that are &quot;<mark class="highlight-teal">Due</mark>&quot;:</p><figure id="dcf66be3-cf05-4f1f-888b-903cfa36da62" class="image"><a href="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%2019.png"><img style="width:528px" src="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%2019.png"/></a></figure><p id="fb80d3cc-886d-439a-8176-7a2ddcdca736" class="">All you have to do now is complete the due cards whenever they appear, and add and learn new cards as you continue studying.</p><h1 id="17c18113-3f5d-4888-8959-317db5761896" class="">7. Explanation of Anki&#x27;s Algorithm</h1><p id="1b3ae9b7-2072-4e54-9de8-a9d4678171b9" class="">Remember when we set up the Deck Options earlier? This is how the program calculates when you&#x27;ll see new cards next. The &quot;Steps&quot; option that we set to &quot;20 180 1440 4320&quot; in particular is most relevant:</p><figure id="8104a26e-7b07-4a1c-a480-adbc48c2a334" class="image"><a href="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%2012.png"><img style="width:480px" src="Anki%20Guide%20for%20MCAT%2092f2c830b4a34dbbb4c683fcab824db3/Untitled%2012.png"/></a><figcaption>The Deck Options that were set up earlier. Notice the &quot;Steps&quot; correspond to the &quot;Again&quot; and &quot;Good&quot; intervals seen on the first card.</figcaption></figure><h2 id="17c8642a-1ef8-4858-9cd4-a81addfb57f7" class="">Learning Phase</h2><p id="e5abeeaf-d6fb-4363-9dca-39df1e31f56f" class="">The &quot;20 180 1440 4320&quot; that we set are called the &quot;<strong>learning steps</strong>&quot;. When you first start studying a card, it is considered to be in the &quot;<strong>learning phase</strong>&quot;. If you click &quot;Good&quot; the first time you see a card, you will see that card in 180 minutes (3 hours) — the card moves to the next learning step. For our settings, we would see the card in 3 hours, then 1 day, then 3 days. If you hit &quot;<strong>Good</strong>&quot; after that 3 day interval, since the &quot;4320&quot; was the last interval step we provided in the options, the card &quot;<strong>graduates</strong>&quot; and goes into the &quot;<strong>review phase</strong>&quot;. The next interval is set to be the graduating interval, which we set to 7 days in the options.</p><p id="4efa8c40-20fb-4f22-b537-3647d902e235" class="">Clicking &quot;<strong>Again</strong>&quot; while a card is in the learning phase moves the card back to the first step. In our case, you would see the card in 20 minutes, and then 3 hours, and so on.</p><p id="d5e3f230-3a88-48cf-92ff-afcde3cbe504" class="">Clicking &quot;<strong>Easy</strong>&quot; at any time during the learning phase immedaitely turns that card into a review card (skipping all remaining learning steps), and its interval is set to the &quot;Easy interval&quot; which we set to 6 days.</p><h2 id="8e8d0d79-8748-4aca-92ed-f238424c8311" class="">Review Phase</h2><p id="d0fa63f9-bba5-490e-b196-f47015c74d9a" class="">Once a card goes through all of the learning steps and graduates, the Anki interval algorithm takes over. When you see that card after 7 days and hit &quot;<strong>Good</strong>&quot;, Anki multiplies that 7 day interval by the &quot;<strong>Ease</strong>&quot; which we set to start at 250% to calculate the new interval: 7 days * 2.5 = 17.5 days. So you&#x27;ll see that card after 17 days.</p><p id="668e0166-2721-4d89-8eb5-845749f1541b" class="">Clicking &quot;<strong>Hard</strong>&quot; means you still answered the card correctly, so that card&#x27;s interval increases. The current interval is mulitplied by 1.2 to calculate the next interval. For the first card, this would be 7 days * 1.2 = 8.4 days. Additionally, that card&#x27;s <strong>ease</strong> is decreased by 15%. That means this card&#x27;s ease is now 235%, meaning you will see the card more frequently (e.g. next time you see the card and hit &quot;Good&quot;, the next interval will be shorter than it would have been if the ease remained at 250%).</p><p id="8ff005a7-adbc-499e-9fed-44030d81d428" class="">Clicking &quot;<strong>Easy</strong>&quot; (which should NOT be happening a lot for the reasons stated above) means the current interval is multiplied by the card&#x27;s ease * easy bonus (which we set to 130%). For this card, that would be 7 days * 2.5 * 1.3 = 22.75 days. Because the card&#x27;s ease increased, it&#x27;s intervals will increase at a faster rate, so you will study this card far less than cards you hit Good or Hard on.</p><p id="1df19a6f-62dc-44b8-8c55-d067496ff088" class="">Clicking &quot;<strong>Again</strong>&quot; on a card in the review phase means that card has &quot;<strong>lapsed</strong>&quot; and the card enters the &quot;<strong>relearning phase</strong>&quot;. The card&#x27;s ease is decreased by 20%, meaning you will see this card more often in the future. The card&#x27;s next interval is calculated as current interval * New interval, which we set to be 40%. For this card, that would be 7 days * 0.4 = 2.8 days. Before this interval is used, Anki will show the card again to relearn, according to the steps in the Lapses section of the deck options. We set this to &quot;20 180&quot;, meaning you will see the card 20 minutes later, and then 3 hours later before seeing the card about 2.8 days later (when it is back in the review phase).</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="e214d588-c6b4-4c71-89aa-23d0de60cf8b"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">The calculated intervals in the review phase have a bit of &quot;fuzz&quot; built into them. For example, instead of seeing the card exactly 17.5 days later, you might see it in 16 days, or in 19 days. This prevents cards that were started together from always coming up on the same day each time you review.</div></figure><p id="bb2498af-bcdf-40c4-8d44-cd05562cf777" class="">
+</p></div></article></body></html>
